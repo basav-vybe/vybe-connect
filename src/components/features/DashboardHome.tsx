@@ -11,7 +11,10 @@ import {
   Target,
   Phone,
   MessageCircle,
-  MapPin
+  MapPin,
+  DollarSign,
+  ArrowDownRight,
+  BarChart3
 } from 'lucide-react';
 
 const DashboardHome: React.FC = () => {
@@ -70,6 +73,61 @@ const DashboardHome: React.FC = () => {
     },
   ];
 
+  // Demo metrics
+  const metrics = [
+    {
+      title: 'Total Leads',
+      value: '1,234',
+      change: '+12.5%',
+      trend: 'up',
+      icon: Users,
+      color: 'blue'
+    },
+    {
+      title: 'Active Projects',
+      value: '45',
+      change: '+5.2%',
+      trend: 'up',
+      icon: Building2,
+      color: 'green'
+    },
+    {
+      title: 'Site Visits',
+      value: '89',
+      change: '+23.1%',
+      trend: 'up',
+      icon: Calendar,
+      color: 'purple'
+    },
+    {
+      title: 'Revenue',
+      value: '₹2.4Cr',
+      change: '+18.7%',
+      trend: 'up',
+      icon: DollarSign,
+      color: 'yellow'
+    }
+  ];
+
+  // Demo conversion funnel
+  const funnelData = [
+    { stage: 'Leads', count: 1234, conversion: '100%' },
+    { stage: 'Qualified', count: 890, conversion: '72%' },
+    { stage: 'Site Visits', count: 450, conversion: '50%' },
+    { stage: 'Negotiations', count: 180, conversion: '40%' },
+    { stage: 'Closed', count: 72, conversion: '40%' }
+  ];
+
+  // Demo performance trends
+  const performanceTrends = [
+    { month: 'Jan', leads: 120, visits: 45, deals: 8 },
+    { month: 'Feb', leads: 150, visits: 60, deals: 12 },
+    { month: 'Mar', leads: 180, visits: 75, deals: 15 },
+    { month: 'Apr', leads: 220, visits: 90, deals: 18 },
+    { month: 'May', leads: 280, visits: 110, deals: 22 },
+    { month: 'Jun', leads: 320, visits: 130, deals: 25 }
+  ];
+
   const smartNudges = [
     { 
       type: 'urgent', 
@@ -108,6 +166,30 @@ const DashboardHome: React.FC = () => {
         <p className="text-gray-600">Here's what's happening with your business today.</p>
       </div>
 
+      {/* Metrics Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {metrics.map((metric, index) => {
+          const Icon = metric.icon;
+          return (
+            <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="flex items-center justify-between mb-4">
+                <div className={`p-2 rounded-lg bg-${metric.color}-100`}>
+                  <Icon className={`h-6 w-6 text-${metric.color}-600`} />
+                </div>
+                <span className={`flex items-center text-sm font-medium ${
+                  metric.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {metric.trend === 'up' ? <ArrowUpRight className="h-4 w-4 mr-1" /> : <ArrowDownRight className="h-4 w-4 mr-1" />}
+                  {metric.change}
+                </span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</h3>
+              <p className="text-sm text-gray-600">{metric.title}</p>
+            </div>
+          );
+        })}
+      </div>
+
       {/* Smart Nudges */}
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
         <h2 className="text-lg font-semibold text-blue-900 mb-3">Smart Nudges</h2>
@@ -137,29 +219,70 @@ const DashboardHome: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, index) => {
-          const Icon = stat.icon;
-          return (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">{stat.label}</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
-                  <p className={`text-sm mt-1 ${
-                    stat.change.includes('+') ? 'text-green-600' : 'text-gray-600'
-                  }`}>
-                    {stat.change}
-                  </p>
-                </div>
-                <div className={`p-3 rounded-full bg-${stat.color}-100`}>
-                  <Icon className={`h-6 w-6 text-${stat.color}-600`} />
+      {/* Conversion Funnel */}
+      <div className="bg-white rounded-xl p-6 shadow-sm">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Conversion Funnel</h2>
+        <div className="space-y-4">
+          {funnelData.map((stage, index) => (
+            <div key={index} className="flex items-center">
+              <div className="w-32 text-sm text-gray-600">{stage.stage}</div>
+              <div className="flex-1">
+                <div className="h-8 bg-gray-100 rounded-lg overflow-hidden">
+                  <div 
+                    className="h-full bg-blue-600 transition-all duration-500"
+                    style={{ width: stage.conversion }}
+                  />
                 </div>
               </div>
+              <div className="w-24 text-right">
+                <div className="text-sm font-medium text-gray-900">{stage.count}</div>
+                <div className="text-xs text-gray-500">{stage.conversion}</div>
+              </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
+      </div>
+
+      {/* Performance Trends */}
+      <div className="bg-white rounded-xl p-6 shadow-sm">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Performance Trends</h2>
+        <div className="h-64">
+          <div className="flex items-end h-48 space-x-4">
+            {performanceTrends.map((trend, index) => (
+              <div key={index} className="flex-1 flex flex-col items-center">
+                <div className="w-full flex items-end space-x-1 h-40">
+                  <div 
+                    className="w-1/3 bg-blue-700 rounded-t"
+                    style={{ height: `${(trend.leads / 320) * 100}%` }}
+                  />
+                  <div 
+                    className="w-1/3 bg-green-700 rounded-t"
+                    style={{ height: `${(trend.visits / 130) * 100}%` }}
+                  />
+                  <div 
+                    className="w-1/3 bg-purple-700 rounded-t"
+                    style={{ height: `${(trend.deals / 25) * 100}%` }}
+                  />
+                </div>
+                <div className="text-xs text-gray-600 mt-2">{trend.month}</div>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center space-x-4 mt-4">
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-blue-700 rounded-full mr-2" />
+              <span className="text-sm text-gray-600">Leads</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-green-700 rounded-full mr-2" />
+              <span className="text-sm text-gray-600">Visits</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-purple-700 rounded-full mr-2" />
+              <span className="text-sm text-gray-600">Deals</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">

@@ -30,14 +30,14 @@ const Sidebar: React.FC<SidebarProps> = ({
   setIsOpen 
 }) => {
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: Home },
-    { id: 'projects', label: 'Projects / Inventory', icon: FolderOpen },
-    { id: 'leads', label: 'Leads CRM', icon: Users },
+    { id: 'dashboard', label: 'Dashboard', icon: Home, tourId: 'dashboard' },
+    { id: 'projects', label: 'Projects / Inventory', icon: FolderOpen, tourId: 'projects' },
+    { id: 'leads', label: 'Leads CRM', icon: Users, tourId: 'leads' },
     { id: 'qualification', label: 'Lead Qualification', icon: Target },
     { id: 'cobroker', label: 'Co-Broker Room', icon: UserCheck },
     { id: 'calendar', label: 'Site Visit Calendar', icon: Calendar },
     { id: 'commission', label: 'Commission Tracker', icon: TrendingUp },
-    { id: 'ai', label: 'Vybe AI Co-Pilot', icon: Bot },
+    { id: 'ai', label: 'Vybe AI Co-Pilot', icon: Bot, tourId: 'ai' },
   ];
 
   const handleItemClick = (itemId: string) => {
@@ -85,6 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleItemClick(item.id)}
+                  data-tour={item.tourId}
                   className={`
                     w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-colors
                     ${activeTab === item.id 
