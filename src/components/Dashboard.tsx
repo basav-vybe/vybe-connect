@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import DashboardHome from './features/DashboardHome';
 import ProjectsInventory from './features/ProjectsInventory';
@@ -9,13 +10,14 @@ import CommissionTracker from './features/CommissionTracker';
 import VybeAI from './features/VybeAI';
 import LeadQualification from './features/LeadQualification';
 
-interface DashboardProps {
-  onLogout: () => void;
-}
-
-const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
+const Dashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate('/');
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -45,7 +47,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
       <Sidebar 
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        onLogout={onLogout}
+        onLogout={handleLogout}
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
       />

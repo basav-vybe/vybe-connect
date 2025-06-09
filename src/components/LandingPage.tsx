@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Building2, 
   Users, 
@@ -16,11 +17,13 @@ import {
   Shield
 } from 'lucide-react';
 
-interface LandingPageProps {
-  onLogin: () => void;
-}
+const LandingPage: React.FC = () => {
+  const navigate = useNavigate();
 
-const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
+  const handleGetStarted = () => {
+    navigate('/dashboard');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -39,7 +42,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                 Pricing
               </button>
               <button 
-                onClick={onLogin}
+                onClick={handleGetStarted}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Sign In
@@ -63,7 +66,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
-                onClick={onLogin}
+                onClick={handleGetStarted}
                 className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg"
               >
                 Get Started Free
@@ -315,7 +318,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
             </ul>
             
             <button 
-              onClick={onLogin}
+              onClick={handleGetStarted}
               className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
             >
               Start Free Trial
@@ -336,7 +339,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={onLogin}
+              onClick={handleGetStarted}
               className="bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Start Using Vybe Connect Now
@@ -367,7 +370,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
       {/* Sticky CTA Bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 p-4 md:hidden">
         <button 
-          onClick={onLogin}
+          onClick={handleGetStarted}
           className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
         >
           Get Started Free
