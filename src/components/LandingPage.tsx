@@ -28,7 +28,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
-              <Building2 className="h-8 w-8 text-blue-600" />
+              <img src="/branding/logo.svg" alt="Vybe Connect" className="h-8 w-auto" />
               <span className="text-2xl font-bold text-gray-900">Vybe Connect</span>
             </div>
             <div className="flex items-center space-x-4">
@@ -353,7 +353,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center space-x-2 mb-8">
-            <Building2 className="h-8 w-8 text-blue-400" />
+            <img src="/branding/logo.svg" alt="Vybe Connect" className="h-8 w-auto" />
             <span className="text-2xl font-bold">Vybe Connect</span>
           </div>
           

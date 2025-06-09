@@ -104,7 +104,7 @@ const DashboardHome: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Good morning, John!</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Good morning, Raju G!</h1>
         <p className="text-gray-600">Here's what's happening with your business today.</p>
       </div>
 

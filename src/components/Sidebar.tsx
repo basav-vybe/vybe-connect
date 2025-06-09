@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Building2, 
   Home, 
   FolderOpen, 
   Users, 
@@ -76,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="flex items-center space-x-2 p-6 border-b border-gray-200">
-            <Building2 className="h-8 w-8 text-blue-600" />
+            <img src="/branding/logo.svg" alt="Vybe Connect" className="h-8 w-auto" />
             <span className="text-xl font-bold text-gray-900">Vybe Connect</span>
           </div>
 
@@ -107,10 +106,10 @@ const Sidebar: React.FC<SidebarProps> = ({
           <div className="border-t border-gray-200 p-4">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-                JD
+                RG
               </div>
               <div>
-                <p className="font-semibold text-gray-900">John Doe</p>
+                <p className="font-semibold text-gray-900">Raju Gowda</p>
                 <p className="text-sm text-gray-600">Senior Broker</p>
               </div>
             </div>
