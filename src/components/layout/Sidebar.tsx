@@ -3,17 +3,15 @@ import {
   Home, 
   FolderOpen, 
   Users, 
+  Target, 
   UserCheck, 
   Calendar, 
-  FileText, 
   TrendingUp, 
-  MapPin, 
-  Bot, 
-  Settings, 
+  Bot,
+  Settings,
   LogOut,
   Menu,
-  X,
-  Target
+  X
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -21,7 +19,7 @@ interface SidebarProps {
   setActiveTab: (tab: string) => void;
   onLogout: () => void;
   isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ 
