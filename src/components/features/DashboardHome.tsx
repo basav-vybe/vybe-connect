@@ -219,67 +219,70 @@ const DashboardHome: React.FC = () => {
         </div>
       </div>
 
-      {/* Conversion Funnel */}
-      <div className="bg-white rounded-xl p-6 shadow-sm">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Conversion Funnel</h2>
-        <div className="space-y-4">
-          {funnelData.map((stage, index) => (
-            <div key={index} className="flex items-center">
-              <div className="w-32 text-sm text-gray-600">{stage.stage}</div>
-              <div className="flex-1">
-                <div className="h-8 bg-gray-100 rounded-lg overflow-hidden">
-                  <div 
-                    className="h-full bg-blue-600 transition-all duration-500"
-                    style={{ width: stage.conversion }}
-                  />
+      {/* Conversion Funnel and Performance Trends side-by-side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Conversion Funnel */}
+        <div className="bg-white rounded-xl p-6 shadow-sm">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Conversion Funnel</h2>
+          <div className="space-y-4">
+            {funnelData.map((stage, index) => (
+              <div key={index} className="flex items-center">
+                <div className="w-32 text-sm text-gray-600">{stage.stage}</div>
+                <div className="flex-1">
+                  <div className="h-8 bg-gray-100 rounded-lg overflow-hidden">
+                    <div 
+                      className="h-full bg-blue-700 transition-all duration-500"
+                      style={{ width: stage.conversion }}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="w-24 text-right">
-                <div className="text-sm font-medium text-gray-900">{stage.count}</div>
-                <div className="text-xs text-gray-500">{stage.conversion}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Performance Trends */}
-      <div className="bg-white rounded-xl p-6 shadow-sm">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Performance Trends</h2>
-        <div className="h-64">
-          <div className="flex items-end h-48 space-x-4">
-            {performanceTrends.map((trend, index) => (
-              <div key={index} className="flex-1 flex flex-col items-center">
-                <div className="w-full flex items-end space-x-1 h-40">
-                  <div 
-                    className="w-1/3 bg-blue-700 rounded-t"
-                    style={{ height: `${(trend.leads / 320) * 100}%` }}
-                  />
-                  <div 
-                    className="w-1/3 bg-green-700 rounded-t"
-                    style={{ height: `${(trend.visits / 130) * 100}%` }}
-                  />
-                  <div 
-                    className="w-1/3 bg-purple-700 rounded-t"
-                    style={{ height: `${(trend.deals / 25) * 100}%` }}
-                  />
+                <div className="w-24 text-right">
+                  <div className="text-sm font-medium text-gray-900">{stage.count}</div>
+                  <div className="text-xs text-gray-500">{stage.conversion}</div>
                 </div>
-                <div className="text-xs text-gray-600 mt-2">{trend.month}</div>
               </div>
             ))}
           </div>
-          <div className="flex justify-center space-x-4 mt-4">
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-blue-700 rounded-full mr-2" />
-              <span className="text-sm text-gray-600">Leads</span>
+        </div>
+
+        {/* Performance Trends */}
+        <div className="bg-white rounded-xl p-6 shadow-sm">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Performance Trends</h2>
+          <div className="h-64">
+            <div className="flex items-end h-48 space-x-4">
+              {performanceTrends.map((trend, index) => (
+                <div key={index} className="flex-1 flex flex-col items-center">
+                  <div className="w-full flex items-end space-x-1 h-40">
+                    <div 
+                      className="w-1/3 bg-blue-700 rounded-t"
+                      style={{ height: `${(trend.leads / 320) * 100}%` }}
+                    />
+                    <div 
+                      className="w-1/3 bg-green-700 rounded-t"
+                      style={{ height: `${(trend.visits / 130) * 100}%` }}
+                    />
+                    <div 
+                      className="w-1/3 bg-purple-700 rounded-t"
+                      style={{ height: `${(trend.deals / 25) * 100}%` }}
+                    />
+                  </div>
+                  <div className="text-xs text-gray-600 mt-2">{trend.month}</div>
+                </div>
+              ))}
             </div>
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-green-700 rounded-full mr-2" />
-              <span className="text-sm text-gray-600">Visits</span>
-            </div>
-            <div className="flex items-center">
-              <div className="w-3 h-3 bg-purple-700 rounded-full mr-2" />
-              <span className="text-sm text-gray-600">Deals</span>
+            <div className="flex justify-center space-x-4 mt-4">
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-blue-700 rounded-full mr-2" />
+                <span className="text-sm text-gray-600">Leads</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-green-700 rounded-full mr-2" />
+                <span className="text-sm text-gray-600">Visits</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-purple-700 rounded-full mr-2" />
+                <span className="text-sm text-gray-600">Deals</span>
+              </div>
             </div>
           </div>
         </div>
